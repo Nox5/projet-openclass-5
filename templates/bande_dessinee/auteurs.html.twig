@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BandeDessineeController!{% endblock %}
+
+{% block body %}
+    {% set auteur = "Bienvenue dans la liste des auteurs" %}
+    <p>{{ auteur }}</p>
+
+    <h2>Nom</h2>
+    {% for auteur in auteurs %}
+        {{ auteur.nom }}
+    {% endfor %}
+
+    <h2>Prenom</h2>
+    {% for auteur in auteurs %}
+        {{ auteur.prenom }}
+    {% endfor %}
+    
+{% endblock %}

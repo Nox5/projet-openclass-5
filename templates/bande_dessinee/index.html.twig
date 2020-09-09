@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Top 5 des Bandes dessinnées du mois {% endblock %}
+
+{% block body %}
+    <p>Top 5 BD du mois</p>
+        <div class="container">
+            <div class="row">
+                {% for bandeDessinee in bandeDessinees %}
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ bandeDessinee.image }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ bandeDessinee.titre }}</h5>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+{% endblock %}
+
