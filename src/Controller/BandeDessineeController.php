@@ -18,7 +18,7 @@ class BandeDessineeController extends AbstractController
     {
         $bandeDessinees = $bandeDessineeRepository->findAll();
 
-        return $this->render('bande_dessinee/index.html.twig', [
+        return $this->render('bande_dessinee/top5.html.twig', [
             'bandeDessinees' => $bandeDessinees,
         ]);
     }

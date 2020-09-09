@@ -16,7 +16,7 @@ class ChroniqueController extends AbstractController
     {
         $chroniques = $chroniqueRepository->findAll();
 
-        return $this->render('chronique/index.html.twig', [
+        return $this->render('chronique/chronique.html.twig', [
             'chroniqueBd' => $chroniques,
         ]);
     }
