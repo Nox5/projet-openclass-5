@@ -24,16 +24,16 @@
         <div class="row">
             <div class="col-lg-8 col-md-10 mx-auto">
                 <div class="post-preview">
-                    <a href="post.html">
-                    {% for chronique in chroniqueBd %}
+                    <a href="{{ path('chronique') }}">
+                    {% for accueilChronique in accueil %}
                         <h2 class="post-title">
-                        {{ chronique.titre }}
+                        {{ accueilChronique.titre }}
                         </h2>
                         <h3 class="post-subtitle">
-                        {{ chronique.contenu }}
+                        Découvrez mon avis sur ce Comics sans plus tarder !
                         </h3>
                         </a>
-                        <p class="post-meta">{{ chronique.Date |date }}
+                        <p class="post-meta">{{ accueilChronique.Date |date }}
                     {% endfor %}
                 </div>
             </div>

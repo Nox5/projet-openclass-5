@@ -2,22 +2,21 @@
 
 namespace App\Controller;
 
-use App\Entity\Chronique;
 use App\Repository\ChroniqueRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ChroniqueController extends AbstractController
+class AccueilController extends AbstractController
 {
     /**
-     * @Route("/chronique", name="chronique")
+     * @Route("/", name="accueil")
      */
     public function index(ChroniqueRepository $chroniqueRepository)
     {
-        $chroniques = $chroniqueRepository->findAll();
+        $accueilChronique = $chroniqueRepository->findAll();
 
-        return $this->render('chronique/chronique.html.twig', [
-            'chroniqueBd' => $chroniques,
+        return $this->render('accueil/accueil.html.twig', [
+            'accueil' => $accueilChronique,
         ]);
     }
 }
