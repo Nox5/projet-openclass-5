@@ -3,18 +3,41 @@
 {% block title %}Hello ChroniqueController!{% endblock %}
 
 {% block body %}
-    <p>accueil</p>
-    <p>Bienvenue dans les chroniques !</p>
-    {% for chronique in chroniqueBd %}
-        <div class="card">
-            <div class="card-header">
-                {{ chronique.Date |date }}
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('image/banniere.jpg')">
+        <div class="overlay"></div>
+        <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="site-heading">
+                <h1>BDiscute</h1>
+                <span class="subheading">Le Blog de discussion autour de la Bande Dessinnée</span>
             </div>
-            <div class="card-body">
-                <h5 class="card-title">{{ chronique.titre }}</h5>
-                <p class="card-text">{{ chronique.contenu }}</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
-    {% endfor %}
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="post-preview">
+                    <a href="post.html">
+                    {% for chronique in chroniqueBd %}
+                        <h2 class="post-title">
+                        {{ chronique.titre }}
+                        </h2>
+                        <h3 class="post-subtitle">
+                        Découvrez mon avis sur ce Comics sans plus tarder !
+                        </h3>
+                        </a>
+                        <p class="post-meta">{{ chronique.Date |date }}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>  
 {% endblock %}
