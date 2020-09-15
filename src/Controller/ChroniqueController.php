@@ -19,23 +19,12 @@ class ChroniqueController extends AbstractController
     {
         $chroniques = $chroniqueRepository->findAll();
 
-        return $this->render('chronique/chronique.html.twig', [
-            'chroniqueBd' => $chroniques,
-        ]);
-    }
-
-    /**
-     * @Route("/form", name="formulaire")
-     *
-     * @return void
-     */
-    public function form()
-    {
         $chronique = new Chronique();
 
         $form = $this->createForm(FormChroniqueType::class, $chronique);
 
-        return $this->render('chronique/chroniqueForm.html.twig', [
+        return $this->render('chronique/chronique.html.twig', [
+            'chroniqueBd' => $chroniques,
             'form' => $form->createView(),
         ]);
     }

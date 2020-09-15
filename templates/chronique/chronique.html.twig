@@ -15,8 +15,9 @@
                 <p class="card-text">{{ chronique.contenu }}</p>
                 <a href="#" class="btn btn-primary">En savoir plus</a>
                 <a href="#" class="btn btn-primary">Supprimer</a>
-                <a href="{{path('admin.propertie.edit')}}" class="btn btn-primary">Editer</a>
+                <a href="#" class="btn btn-primary">Editer</a>
             </div>
         </div>
     {% endfor %}
+    {{ form(form) }}
 {% endblock %}
