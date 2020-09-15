@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class BandeDessineeController extends AbstractController
 {
     /**
+     * Affiche les bd du mois
      * @Route("/topbd", name="top5")
      */
     public function TopBd(BandeDessineeRepository $bandeDessineeRepository)
