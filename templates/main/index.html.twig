@@ -1,19 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Chronique{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
-    <p>accueil</p>
-    <p>Bienvenue dans les chroniques !</p>
+    <p>Accueil</p>
+    {% for chronique in accueilChronique %}
         <div class="card">
             <div class="card-header">
                 {{ chronique.Date |date }}
             </div>
             <div class="card-body">
                 <h5 class="card-title">{{ chronique.titre }}</h5>
-                <p class="card-text">{{ chronique.contenu }}</p>
+                <a href="{{ path("chronique", { id:chronique.id }) }}" class="btn btn-primary">En savoir plus</a>
             </div>
         </div>
-    <h1>Commenter</h1>
-    {{ form(form) }}
+    {% endfor %}
 {% endblock %}
+
