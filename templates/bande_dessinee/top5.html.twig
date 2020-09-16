@@ -7,15 +7,17 @@
         <div class="container">
             <div class="row">
                 {% for bandeDessinee in bandeDessinees %}
-                    <div class="card" style="width: 18rem;">
-                        <img src="{{ bandeDessinee.image }}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ bandeDessinee.titre }}</h5>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <div class="col">
+                        <div class="card" style="width: 18rem;">
+                            <img src="{{ bandeDessinee.image }}" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ bandeDessinee.titre }}</h5>
+                                <a href="#" class="btn btn-primary">En savoir plus</a>     
+                            </div>
                         </div>
                     </div>
                 {% endfor %}
-            </div>
+            </div>  
         </div>
 {% endblock %}
 
