@@ -23,4 +23,21 @@ class BandeDessineeController extends AbstractController
             'bandeDessinees' => $bandeDessinees,
         ]);
     }
+
+    /**
+     * @Route("/bandeDessinee/{id}", name="bandeDessinee")
+     *
+     * @param BandeDessineeRepository $bandeDessineeRepository
+     * @param BandeDessinee $bandeDessinee
+     * @return void
+     */
+    public function vueBandeDessinee(BandeDessinee $bandeDessinee, BandeDessineeRepository $bandeDessineeRepository)
+    {
+
+        $bandeDessinee = $bandeDessineeRepository->find($bandeDessinee);
+
+        return $this->render('bande_dessinee/bandeDessinee.html.twig', [
+            'bandeDessinee' => $bandeDessinee,
+        ]);
+    }
 }

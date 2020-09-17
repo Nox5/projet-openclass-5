@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Titre de la bd{% endblock %}
+
+
+
+{% block body %}
+
+    <header class="masthead" style="background-image: url('image/banniere.jpg')">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    <div class="site-heading">
+                        <h1>{{ bandeDessinee.titre|raw }}</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7">
+            <a href="#">
+                <img class="img-fluid rounded mb-3 mb-md-0" src="{{ bandeDessinee.image }}" alt="">
+            </a>
+            </div>
+            <div class="col-md-5">
+                <h3>{{ bandeDessinee.titre|raw }}</h3>
+                <p>{{ bandeDessinee.contenu|raw }}</p>
+                <a href="{{ path("top5") }}"  class="btn btn-primary">Top 5 bande dessinée</a>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
