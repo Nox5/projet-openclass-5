@@ -9,13 +9,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     /**
+     * Affiche les chroniques sur la page d'accueil
      * @Route("/", name="main")
      */
-    public function index(ChroniqueRepository $chroniqueRepository)
+    public function viewChroniques(ChroniqueRepository $chroniqueRepository)
     {
         $chronique = $chroniqueRepository->findAll();
 
-        return $this->render('main/index.html.twig', [
+        return $this->render('main/accueil.html.twig', [
             'accueilChronique' => $chronique,
         ]);
     }

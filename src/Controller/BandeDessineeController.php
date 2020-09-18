@@ -15,7 +15,7 @@ class BandeDessineeController extends AbstractController
      * Affiche les bd du mois
      * @Route("/topbd", name="top5")
      */
-    public function TopBd(BandeDessineeRepository $bandeDessineeRepository)
+    public function getBandesDessinees(BandeDessineeRepository $bandeDessineeRepository)
     {
         $bandeDessinees = $bandeDessineeRepository->findAll();
 
@@ -31,7 +31,7 @@ class BandeDessineeController extends AbstractController
      * @param BandeDessinee $bandeDessinee
      * @return void
      */
-    public function vueBandeDessinee(BandeDessinee $bandeDessinee, BandeDessineeRepository $bandeDessineeRepository)
+    public function getBandeDessinee(BandeDessinee $bandeDessinee, BandeDessineeRepository $bandeDessineeRepository)
     {
 
         $bandeDessinee = $bandeDessineeRepository->find($bandeDessinee);
@@ -40,4 +40,6 @@ class BandeDessineeController extends AbstractController
             'bandeDessinee' => $bandeDessinee,
         ]);
     }
+
+    
 }
