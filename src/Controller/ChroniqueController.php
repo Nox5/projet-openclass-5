@@ -5,20 +5,13 @@ namespace App\Controller;
 use App\Entity\Chronique;
 use App\Entity\Commentaire;
 use App\Form\CommentaireFormType;
-use App\Form\FormChroniqueType;
-use App\Repository\ChroniqueRepository;
 use App\Repository\CommentaireRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
-use PhpParser\Builder\Property;
-use ProxyManager\ProxyGenerator\Util\Properties;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
+
 
 class ChroniqueController extends AbstractController
 {
@@ -30,6 +23,7 @@ class ChroniqueController extends AbstractController
         $commentaire = new Commentaire();
 
         $form = $this->createForm(CommentaireFormType::class, $commentaire);
+        
 
         $form->handleRequest($request);
 
@@ -50,39 +44,19 @@ class ChroniqueController extends AbstractController
     }
 
     /**
-     * @Route("/commentaires/{id}", name="commentaires", methods={"GET"})
+     * @Route("/commentaires", name="commentaires")
      *
-     * @param ChroniqueRepository $chroniqueRepository
+     * @param CommentaireRepository $chroniqueRepository
      * @param [type] $id
      * @return void
      */
-    public function getCommentsChronique($id, ChroniqueRepository $chroniqueCommentaire)
+    public function getCommentsChronique(CommentaireRepository $comments)
     {
-        $commentaire = $chroniqueCommentaire->find($id);
 
-        // On spécifie qu'on utilise l'encodeur JSON
-        $encoders = [new JsonEncoder()];
+        $comments = $comments->getTheCommentsChronique();
 
-        // On instancie le "normaliseur" pour convertir la collection en tableau
-        $normalizers = [new ObjectNormalizer()];
-
-        // On instancie le convertisseur
-        $serializer = new Serializer($normalizers, $encoders);
-
-        // On convertit en json
-        $jsonContent = $serializer->serialize($commentaire, 'json', [
-            'circular_reference_handler' => function ($object) {
-                return $object->getId();
-            }
+        return $this->render('chronique/chronique.html.twig', [
+            'comments' => $comments,
         ]);
-
-        // On instancie la réponse
-        $response = new Response($jsonContent);
-
-        // On ajoute l'entête HTTP
-        $response->headers->set('Content-Type', 'application/json');
-
-        // On envoie la réponse
-        return $response;
     }
 }

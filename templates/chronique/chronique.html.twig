@@ -5,17 +5,9 @@
 {% block body %}
     <p>accueil</p>
     <p>Bienvenue dans les chroniques !</p>
-        <div class="card">
-            <div class="card-header">
-                {{ chronique.Date |date }}
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">{{ chronique.titre }}</h5>
-                <p class="card-text">{{ chronique.contenu|raw }}</p>
-            </div>
-        </div>
+        <p>{{ chronique.titre|raw }}</p>
+        <p>{{ chronique.contenu|raw }}</p>
+        <p>{{ chronique.date|date }}</p>
     <h1>Commenter</h1>
-    {{ form(form) }}
-        <p>{{ commentaire.name }}</p>
-        <p>{{ commentaire.contenu }}</p>
+        {{ form(form) }}
 {% endblock %}
