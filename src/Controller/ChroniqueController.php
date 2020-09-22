@@ -113,6 +113,6 @@ class ChroniqueController extends AbstractController
         $entityManager->remove($chronique);
         $entityManager->flush();
 
-        return $this->redirectToRoute("chronique");
+        return $this->redirectToRoute("main");
     }
 }
