@@ -5,6 +5,9 @@
 {% block body %}
     <p>accueil</p>
     <p>Bienvenue dans les chroniques !</p>
+    <a href="{{ path('add_chronique') }}">Ajouter</a>
+    <a href="{{ path('modify_chronique', {'id': chronique.id}) }}">Modifier</a>
+    <a href="{{ path('delete_chronique', {'id': chronique.id}) }}">Supprimer</a>
         <div class="card">
             <div class="card-header">
                 {{ chronique.Date |date }}
