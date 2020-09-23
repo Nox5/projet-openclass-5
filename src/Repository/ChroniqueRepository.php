@@ -18,7 +18,7 @@ class ChroniqueRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Chronique::class);
     }
-
+    
     // /**
     //  * @return Chronique[] Returns an array of Chronique objects
     //  */

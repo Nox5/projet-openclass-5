@@ -6,16 +6,14 @@ use App\Entity\Chronique;
 use App\Entity\Commentaire;
 use App\Form\ChroniqueFormType;
 use App\Form\CommentaireFormType;
-use App\Form\FormChroniqueType;
-use App\Repository\ChroniqueRepository;
+use App\Repository\CommentaireRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
-use PhpParser\Builder\Property;
-use ProxyManager\ProxyGenerator\Util\Properties;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
 
 class ChroniqueController extends AbstractController
 {
@@ -24,13 +22,14 @@ class ChroniqueController extends AbstractController
      * Permet l'ajout d'un commentaire en base de donnée
      * @Route("/chronique/{id}", name="chronique")
      */
-    public function index(Request $request, Chronique $chronique, EntityManagerInterface $entityManager)
+    public function addCommentChronique(Request $request, Chronique $chronique, EntityManagerInterface $entityManager, CommentaireRepository $commentaireRepository)
     {
         $commentaire = new Commentaire();
 
         $form = $this->createForm(CommentaireFormType::class, $commentaire);
-
+        
         $form->handleRequest($request);
+
         if($form->isSubmitted() && $form->isValid()){
 
             $commentaire->setDate(new DateTime());
@@ -39,11 +38,13 @@ class ChroniqueController extends AbstractController
 
             $entityManager->persist($commentaire);
             $entityManager->flush();
+            return $this->redirectToRoute('chronique', ['id' => $chronique->getId()]);
         }
 
         return $this->render('chronique/chronique.html.twig', [
             'chronique' => $chronique,
             'form' => $form->createView(),
+            'commentaires' => $commentaireRepository->findBy(['chronique' => $chronique], ['date' => 'DESC'], 10)
         ]);
     }
 
