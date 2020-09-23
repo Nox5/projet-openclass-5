@@ -19,6 +19,16 @@ class CommentaireRepository extends ServiceEntityRepository
         parent::__construct($registry, Commentaire::class);
     }
 
+    /**
+     * Récupére les commentaires liés à une chronique
+     *
+     * @return void
+     */
+    public function getTheCommentsChronique()
+    {
+        return $this->findBy([], ['date' => 'DESC'], 5);
+    }
+
     // /**
     //  * @return Commentaire[] Returns an array of Commentaire objects
     //  */

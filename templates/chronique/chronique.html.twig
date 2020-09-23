@@ -5,6 +5,10 @@
 {% block body %}
     <p>accueil</p>
     <p>Bienvenue dans les chroniques !</p>
+        <p>{{ chronique.titre|raw }}</p>
+        <p>{{ chronique.contenu|raw }}</p>
+        <p>{{ chronique.date|date }}</p>
+
     <a href="{{ path('add_chronique') }}">Ajouter</a>
     <a href="{{ path('modify_chronique', {'id': chronique.id}) }}">Modifier</a>
     <a href="{{ path('delete_chronique', {'id': chronique.id}) }}">Supprimer</a>
@@ -18,5 +22,8 @@
             </div>
         </div>
     <h1>Commenter</h1>
-    {{ form(form) }}
+        {{ form(form) }}
+        {% for commentaire in commentaires %}
+            <p>{{ commentaire.contenu }}</p>
+        {% endfor %}
 {% endblock %}
