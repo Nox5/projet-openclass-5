@@ -18,13 +18,12 @@ class ChroniqueController extends AbstractController
     /**
      * @Route("/chronique/{id}", name="chronique")
      */
-    public function addCommentChronique(Request $request, Chronique $chronique, EntityManagerInterface $entityManager)
+    public function addCommentChronique(Request $request, Chronique $chronique, EntityManagerInterface $entityManager, CommentaireRepository $commentaireRepository)
     {
         $commentaire = new Commentaire();
 
         $form = $this->createForm(CommentaireFormType::class, $commentaire);
         
-
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
@@ -35,28 +34,13 @@ class ChroniqueController extends AbstractController
 
             $entityManager->persist($commentaire);
             $entityManager->flush();
+            return $this->redirectToRoute('chronique', ['id' => $chronique->getId()]);
         }
 
         return $this->render('chronique/chronique.html.twig', [
             'chronique' => $chronique,
             'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/commentaires", name="commentaires")
-     *
-     * @param CommentaireRepository $chroniqueRepository
-     * @param [type] $id
-     * @return void
-     */
-    public function getCommentsChronique(CommentaireRepository $comments)
-    {
-
-        $comments = $comments->getTheCommentsChronique();
-
-        return $this->render('chronique/chronique.html.twig', [
-            'comments' => $comments,
+            'commentaires' => $commentaireRepository->findBy(['chronique' => $chronique], ['date' => 'DESC'], 10)
         ]);
     }
 }

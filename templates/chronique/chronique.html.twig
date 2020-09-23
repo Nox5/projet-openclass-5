@@ -10,4 +10,7 @@
         <p>{{ chronique.date|date }}</p>
     <h1>Commenter</h1>
         {{ form(form) }}
+        {% for commentaire in commentaires %}
+            <p>{{ commentaire.contenu }}</p>
+        {% endfor %}
 {% endblock %}
