@@ -9,6 +9,7 @@ use App\Form\CommentaireFormType;
 use App\Repository\CommentaireRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,13 +23,19 @@ class ChroniqueController extends AbstractController
      * Permet l'ajout d'un commentaire en base de donnée
      * @Route("/chronique/{id}", name="chronique")
      */
-    public function addCommentChronique(Request $request, Chronique $chronique, EntityManagerInterface $entityManager, CommentaireRepository $commentaireRepository)
+    public function addCommentChronique(PaginatorInterface $paginator, Request $request, Chronique $chronique, EntityManagerInterface $entityManager, CommentaireRepository $commentaireRepository)
     {
         $commentaire = new Commentaire();
 
         $form = $this->createForm(CommentaireFormType::class, $commentaire);
         
         $form->handleRequest($request);
+
+        $paginator = $paginator->paginate(
+            $commentaireRepository->getQueryForPagination($chronique),
+            $request->query->getInt('page', 1),
+            5
+        );
 
         if($form->isSubmitted() && $form->isValid()){
 
@@ -44,7 +51,7 @@ class ChroniqueController extends AbstractController
         return $this->render('chronique/chronique.html.twig', [
             'chronique' => $chronique,
             'form' => $form->createView(),
-            'commentaires' => $commentaireRepository->findBy(['chronique' => $chronique], ['date' => 'DESC'], 10)
+            'commentaires' => $paginator
         ]);
     }
 

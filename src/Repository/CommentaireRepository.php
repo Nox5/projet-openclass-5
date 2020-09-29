@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Chronique;
 use App\Entity\Commentaire;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -27,6 +28,15 @@ class CommentaireRepository extends ServiceEntityRepository
     public function getTheCommentsChronique()
     {
         return $this->findBy([], ['date' => 'DESC'], 5);
+    }
+
+    public function getQueryForPagination(Chronique $chronique)
+    {
+        return $this->createQueryBuilder('c')
+            ->where('c.chronique = :chronique')
+            ->setParameter('chronique', $chronique)
+            ->orderBy('c.date', 'DESC')
+            ->getQuery();
     }
 
     // /**
