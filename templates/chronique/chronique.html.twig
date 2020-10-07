@@ -28,6 +28,7 @@
                     <div class="card-body textChronique">
                         {{ chronique.Date |date }}
                         <p class="card-text">{{ chronique.contenu|raw }}</p>
+                        <a href="{{ path("main") }}"  class="btn btn-primary">Accueil des chroniques</a>
                     </div>
                 </div>
             </div>
