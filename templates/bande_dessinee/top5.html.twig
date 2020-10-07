@@ -1,23 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Top 5 des Bandes dessinnées du mois {% endblock %}
+{% block title %}Top 5{% endblock %}
 
 {% block body %}
-    <p>Top 5 BD du mois</p>
-        <div class="container">
-            <div class="row">
-                {% for bandeDessinee in bandeDessinees %}
-                    <div class="col">
-                        <div class="card" style="width: 18rem;">
-                            <img src="{{ bandeDessinee.image }}" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ bandeDessinee.titre }}</h5>
-                                <a href="{{ path("bandeDessinee", { id:bandeDessinee.id }) }}" class="btn btn-primary">En savoir plus</a>
-                            </div>
+<header class="masthead" style="background-image: url('image/biblio.jpg')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Top 5 BD du mois</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+</header>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            {% for bandeDessinee in bandeDessinees %}
+                <div class="col-lg-5 cardsBdDuTop5">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('image/'~bandeDessinee.image|e) }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ bandeDessinee.titre }}</h5>
+                            <a href="{{ path("bandeDessinee", { id:bandeDessinee.id }) }}" class="btn btn-primary">En savoir plus</a>
                         </div>
                     </div>
-                {% endfor %}
-            </div>  
-        </div>
+                </div>
+            {% endfor %}
+        </div>  
+    </div>
 {% endblock %}
 

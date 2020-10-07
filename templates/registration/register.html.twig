@@ -7,15 +7,53 @@
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
 
-    <h1>Inscription</h1>
+    <header class="masthead" style="background-image: url('image/inscription.jpg')">
+        <div class="overlay"></div>
+        <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h1>Inscription</h1>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+    <div class="container">
+        <figure>
+            <h3 class="titreInscription">Veuillez remplir les champs ci-dessous pour valider votre inscription :</h3>
+        </figure>
+        {{ form_start(registrationForm) }}
+            {{ form_row(registrationForm.email) }}
+            {{ form_row(registrationForm.plainPassword, {
+                label: 'Password'
+            }) }}
+            {{ form_row(registrationForm.agreeTerms) }}
+
+            <button type="submit" class="btn btn-info">Créer le compte</button>
+        {{ form_end(registrationForm) }}
+    </div>
+
+    <div class="container conditionUtilisation">
+        <div class="row">
+            <div class="col titreCondition">
+                <h3>Conditions d'utilisation du site BDiscute.fr</h3>
+            </div>
+            <div class="col-12 textCondition">
+                <p>L'inscription au site BDiscute.fr est nécessaire pour accéder à certaines fonctionnalités
+                du site comme par exemple la gestion de votre collection de BD en ligne.
+                </p>
+                <p>Vous acceptez de ne pas publier de contenu abusif, obscène, vulgaire, diffamatoire, choquant, menaçant, à caractère sexuel
+                ou autre qui peut transgresser les lois de votre pays, du pays où “BDiscute” est hébergé ou les lois internationales.
+                Le faire peut vous mener à un bannissement immédiat et permanent, avec une notification à votre fournisseur d’accès à internet si nous le jugeons nécessaire.
+                L’adresse IP de tous les messages est enregistrée pour aider au renforcement de ces conditions.<p>
+                <p>Vous acceptez que “BDiscute” supprime, édite, déplace ou verrouille n’importe quel sujet lorsque nous estimons que cela est nécessaire.
+                En tant qu’utilisateur, vous acceptez que toutes les informations que vous avez entrées soient stockées dans notre base de données.
+                Bien que ces informations ne soient pas diffusées à une tierce partie sans votre consentement,
+                “BDiscute” ne pourra être tenus comme responsable en cas de tentative de piratage visant à compromettre les données.</p>
+            </div>
+        </div>
+    </div>
 {% endblock %}

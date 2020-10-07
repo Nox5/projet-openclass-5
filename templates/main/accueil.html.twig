@@ -17,16 +17,24 @@
     </div>
 </header>
 
-    {% for chronique in accueilChronique %}
-        <div class="card">
+    <div class="container textCoupDeCoeur">
+      <h3>Coups de coeur de la rentrée</h3>
+    </div>
+
+  <figure>
+      {% for chronique in accueilChronique %}
+        <div class="container chroniqueAccueil">
+          <div class="card shadow-lg p-3 mb-5 bg-white rounded">
             <div class="card-header">
-                {{ chronique.Date |date }}
+              {{ chronique.Date |date }}
             </div>
             <div class="card-body">
-                <h5 class="card-title">{{ chronique.titre }}</h5>
-                <a href="{{ path("chronique", { id:chronique.id }) }}" class="btn btn-primary">En savoir plus</a>
+              <h5 class="card-title">{{ chronique.titre }}</h5>
+              <a href="{{ path("chronique", { id:chronique.id }) }}" class="btn btn-info">En savoir plus</a>
             </div>
+          </div>
         </div>
     {% endfor %}
+  </figure>
 {% endblock %}
 
