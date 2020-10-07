@@ -3,11 +3,22 @@
 {% block title %}Chronique{% endblock %}
 
 {% block body %}
-    <p>accueil</p>
-    <p>Bienvenue dans les chroniques !</p>
-    <a href="{{ path('add_chronique') }}">Ajouter</a>
-    <a href="{{ path('modify_chronique', {'id': chronique.id}) }}">Modifier</a>
-    <a href="{{ path('delete_chronique', {'id': chronique.id}) }}">Supprimer</a>
+<header class="masthead" style="background-image: src="{{ asset('image/'~chronique.image|e) }}">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>{{ chronique.titre }}</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+</header>
+    <div class="container">
+        <a href="{{ path('add_chronique') }}">Ajouter</a>
+        <a href="{{ path('modify_chronique', {'id': chronique.id}) }}">Modifier</a>
+        <a href="{{ path('delete_chronique', {'id': chronique.id}) }}">Supprimer</a>
         <div class="card">
             <div class="card-header">
                 {{ chronique.Date |date }}
@@ -15,15 +26,24 @@
             <div class="card-body">
                 <h5 class="card-title">{{ chronique.titre }}</h5>
                 <p class="card-text">{{ chronique.contenu|raw }}</p>
+                <img src="{{ asset('image/'~chronique.image|e) }}">
             </div>
         </div>
-    <h1>Commenter</h1>
+    </div>
+
+    <div class="container commentaires">
+        <h2 class="titre">Commentaire</h2>
         {{ form(form) }}
-        <p>Il y a {{ commentaires.getTotalItemCount }}</p>
+        <p class="nombreDeCommentaire">Il y a {{ commentaires.getTotalItemCount }} commentaire(s)</p>
         {% for commentaire in commentaires %}
-            <p>{{ commentaire.contenu }}</p>
+            <p class="PseudoDuCommentaire">Par : {{ commentaire.name }}</p>
+            <p class="contenuDuCommentaire">{{ commentaire.contenu }}</p>
         {% endfor %}
-    <div class="navigation">
-        {{ knp_pagination_render(commentaires) }}
+    </div>
+
+    <div class="container">
+        <div class="pagination">
+            <p>{{ knp_pagination_render(commentaires) }}</p>
+        </div>
     </div>
 {% endblock %}

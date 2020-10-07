@@ -1,1 +1,133 @@
+body
+{
+    overflow-x: hidden;
+}
+/*MAIN*/
+.chroniqueAccueil
+{
+    margin-bottom: 1em;
+}
+
+.card-header
+{
+    background-color: #FCBF49;
+}
+
+.btn-info
+{
+    border-radius: 2px;
+}
+
+.textCoupDeCoeur
+{
+    background-color: #48CAE4;
+    color: white;
+    padding: 1%;
+    margin-bottom: 2em;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #48CAE4;
+}
+
+figure
+{
+    position: relative;
+    left: 60%;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    transition: all 1.5s ease;
+}
+
+/*TOP 5*/
+.cardsBdDuTop5
+{
+    margin: 1em auto;
+}
+
+/*BANDE DESSINEE*/
+.blocAutourDeLaBd
+{
+    background-color: black;
+    padding: 2%;
+}
+
+.textResume h3, p
+{
+    color: white;
+}
+
+/*CHRONIQUE*/
+.titre
+{
+    color: #F77F00;
+    margin: 2em auto 1em;
+}
+
+.nombreDeCommentaire
+{
+    color: #219EBC;
+}
+
+.PseudoDuCommentaire
+{
+    font-weight: bold;
+    color: #FB8500;
+}
+
+.commentaires
+{
+    background-color: rgba(254, 250, 224, 0.7);
+}
+
+.pagination p
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*IDENTIFICATION*/
+.boutonValidationIdentifiant
+{
+    margin-top: 1em;
+}
+
+.textMotDePasse
+{
+    color: #219EBC;
+}
+
+.textEmail
+{
+    color: #219EBC;
+}
+
+/*INSCRIPTION*/
+.titreInscription
+{
+    color: #FB8500;
+    margin: 2em auto;
+}
+
+.conditionUtilisation
+{
+    border: 1px solid grey;
+    padding: 2%;
+    background-color: #E9ECEF;
+    margin: 2% auto;
+}
+
+.titreCondition
+{
+    color: #6C757D;
+}
+
+.textCondition
+{
+    background-color: white;
+}
+
+.textCondition p
+{
+    color: black;
+}
 
