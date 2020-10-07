@@ -74,9 +74,24 @@ figure
     color: #FB8500;
 }
 
+.contenuDuCommentaire
+{
+    color: black;
+}
+
 .commentaires
 {
     background-color: rgba(254, 250, 224, 0.7);
+}
+
+.commentaires
+{
+    color: black;
+}
+
+.textChronique p
+{
+    color: black;
 }
 
 .pagination p
