@@ -11,6 +11,7 @@ use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -59,6 +60,7 @@ class ChroniqueController extends AbstractController
     /**
      * Ajouter une chronique(create)
      *@Route("/add-chronique", name="add_chronique")
+     *@IsGranted("ROLE_ADMIN")
      * @param Request $request
      * @return Response
      */
@@ -85,6 +87,7 @@ class ChroniqueController extends AbstractController
     /**
      * Modifie une chronique(update)
      * @Route("/modify-chronique/{id}", name="modify_chronique")
+     * @IsGranted("ROLE_ADMIN")
      * @param Request $request
      * @param integer $id
      * @return Response
@@ -111,6 +114,7 @@ class ChroniqueController extends AbstractController
     /**
      * Supprime la chronique(delete)
      * @Route("/delete-chronique/{id}", name="delete_chronique")
+     * @IsGranted("ROLE_ADMIN")
      * @param integer $id
      * @return Response
      */

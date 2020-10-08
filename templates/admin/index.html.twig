@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+    {% for chronique in chroniques %}
+    <p>{{chronique.contenu|raw}}</p>
+    <a href="{{ path('add_chronique') }}">Ajouter</a>
+    <a href="{{ path('modify_chronique', {'id': chronique.id}) }}">Modifier</a>
+    <a href="{{ path('delete_chronique', {'id': chronique.id}) }}">Supprimer</a>
+    {% endfor %}
+{% endblock %}
