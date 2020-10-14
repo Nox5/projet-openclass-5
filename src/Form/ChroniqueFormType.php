@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Chronique;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -18,6 +19,7 @@ class ChroniqueFormType extends AbstractType
             ->add('date')
             ->add('image')
             ->add('submit', SubmitType::class)
+            ->add('contenu', CKEditorType::class)
         ;
     }
 

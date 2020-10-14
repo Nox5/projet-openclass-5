@@ -31,6 +31,7 @@
                 <p>Une BD de</p>
                 <p>{{ bandeDessinee.contenu|raw }}</p>
                 <a href="{{ path("top5") }}"  class="btn btn-primary">Top 5 bande dessinée</a>
+                <a href="{{ path("addwishlist", { id:bandeDessinee.id }) }}"  class="btn btn-primary">Ajouter à ma wishlist</a>
             </div>
         </div>
     </div>

@@ -28,7 +28,7 @@ class ChroniqueController extends AbstractController
     {
         $commentaire = new Commentaire();
 
-        $form = $this->createForm(CommentaireFormType::class, $commentaire);
+        $form = $this->createForm(CommentaireFormType ::class, $commentaire);
         
         $form->handleRequest($request);
 

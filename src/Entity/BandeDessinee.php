@@ -39,9 +39,15 @@ class BandeDessinee
      */
     private $image;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=WishList::class, mappedBy="bandeDessinee")
+     */
+    private $wishLists;
+
     public function __construct()
     {
         $this->auteurs = new ArrayCollection();
+        $this->wishLists = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -109,6 +115,34 @@ class BandeDessinee
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|WishList[]
+     */
+    public function getWishLists(): Collection
+    {
+        return $this->wishLists;
+    }
+
+    public function addWishList(WishList $wishList): self
+    {
+        if (!$this->wishLists->contains($wishList)) {
+            $this->wishLists[] = $wishList;
+            $wishList->addBandeDessinee($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWishList(WishList $wishList): self
+    {
+        if ($this->wishLists->contains($wishList)) {
+            $this->wishLists->removeElement($wishList);
+            $wishList->removeBandeDessinee($this);
+        }
 
         return $this;
     }
