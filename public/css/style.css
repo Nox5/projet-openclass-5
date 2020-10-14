@@ -146,3 +146,14 @@ figure
     color: black;
 }
 
+/*ADMINISTRATION*/
+.boutonAjouterChronique
+{
+    margin: 2%;
+}
+
+.chroniqueAdministration
+{
+    margin: 3%;
+}
+

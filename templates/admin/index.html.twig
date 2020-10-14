@@ -1,12 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AdminController!{% endblock %}
+{% block title %}Mon compte{% endblock %}
 
 {% block body %}
-    {% for chronique in chroniques %}
-    <p>{{chronique.contenu|raw}}</p>
-    <a href="{{ path('add_chronique') }}">Ajouter</a>
-    <a href="{{ path('modify_chronique', {'id': chronique.id}) }}">Modifier</a>
-    <a href="{{ path('delete_chronique', {'id': chronique.id}) }}">Supprimer</a>
-    {% endfor %}
+    {% if is_granted("ROLE_ADMIN") %}
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    {% for chronique in chroniques %}
+                        <div class="card chroniqueAdministration">
+                            <h5 class="card-header">Chronique du : {{chronique.date|date}}</h5>
+                            <div class="card-body">
+                                <h5 class="card-title">{{chronique.titre|raw}}</h5>
+                                <p class="card-text">{{chronique.contenu|raw[0:100]}}</p>
+                                <a href="{{ path('modify_chronique', {'id': chronique.id}) }}" class="btn btn-primary">Modifier</a>
+                                <a href="{{ path('delete_chronique', {'id': chronique.id}) }}" class="btn btn-primary">Supprimer</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <a href="{{ path('add_chronique') }}" class="btn btn-primary boutonAjouterChronique">Ajouter une nouvelle chronique</a>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3>Ma wishlist</h3>
+                {% for whishlist in wishlists %}
+                    <p>id : {{ whishlist.id }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    
 {% endblock %}
