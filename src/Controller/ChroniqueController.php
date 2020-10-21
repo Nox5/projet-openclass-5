@@ -76,6 +76,7 @@ class ChroniqueController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($chronique);
             $entityManager->flush();
+            $this->addFlash('success', 'Nouvelle chronique ajouté ! ');
         }
 
         return $this->render("chronique/chronique-form.html.twig", [
@@ -103,6 +104,7 @@ class ChroniqueController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
             $entityManager->flush();
+            $this->addFlash('success', 'Chronique modifiée ');
         }
 
         return $this->render("chronique/chronique-form.html.twig", [
@@ -121,9 +123,13 @@ class ChroniqueController extends AbstractController
     public function deleteChronique(int $id): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
+
         $chronique = $entityManager->getRepository(Chronique::class)->find($id);
+
         $entityManager->remove($chronique);
         $entityManager->flush();
+
+        $this->addFlash('success', 'Chronique supprimée ');
 
         return $this->redirectToRoute("main");
     }
