@@ -3,10 +3,11 @@
 {% block body %}
     <div class="container">
         <div clas="row">
-            <div class="col">
+            <div class="col titreCrud">
                 <h3>{{ form_title }}</h3>
                 {{ form(form_chronique) }}
             </div>
+             <a href="{{ path("admin") }}" class="btn btn-primary boutonRetourAdmin">Retour</a>
         </div>
     </div>
 {% endblock %}

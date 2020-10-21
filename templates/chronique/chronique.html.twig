@@ -41,7 +41,7 @@
         <p class="nombreDeCommentaire">Il y a {{ commentaires.getTotalItemCount }} commentaire(s)</p>
         {% for commentaire in commentaires %}
             <p class="PseudoDuCommentaire">Par : {{ commentaire.name }}</p>
-            <p class="contenuDuCommentaire">{{ commentaire.contenu }}</p>
+            <p class="contenuDuCommentaire">{{ commentaire.contenu|raw }}</p>
         {% endfor %}
     </div>
 

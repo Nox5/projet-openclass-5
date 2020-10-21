@@ -56,6 +56,11 @@ figure
     color: white;
 }
 
+.boutonAjouterWishList
+{
+    margin: 5% auto;
+}
+
 /*CHRONIQUE*/
 .titre
 {
@@ -155,5 +160,20 @@ figure
 .chroniqueAdministration
 {
     margin: 3%;
+}
+
+.titreCrud h3
+{
+    margin: 2%;
+}
+
+.boutonRetourAdmin
+{
+    margin: 2%;
+}
+
+.alert
+{
+    text-align: center;
 }
 
