@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                {% if wishlist is null  %}
+                    <p>Vous n'avez pas encore de wishlist</p>
+                {% else %}
+                    <h3>Ma wishlist</h3>
+                    {% for bandeDessinee in wishlist.getBandeDessinee() %}
+                        <p>{{ bandeDessinee.titre}}</p>
+                        <a href="{{ path('deletebdwishlist', {'id': bandeDessinee.id}) }}" class="btn btn-primary">Supprimer</a>
+                    {% endfor %}
+                {% endif %}  
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

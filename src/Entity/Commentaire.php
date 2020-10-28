@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CommentaireRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,11 +19,19 @@ class Commentaire
     private $id;
 
     /**
+     *  @Assert\NotBlank(message = "Le nom ne peut être vide")
+     *  @Assert\Length(
+     *  min = 3,
+     *  max = 70,
+     *  minMessage = "Ce titre est trop court",
+     *  maxMessage = "Ce titre est trop long"
+     * )
      * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
+     * @Assert\NotBlank(message = "Le contenu ne peut être vide")
      * @ORM\Column(type="string", length=255)
      */
     private $contenu;

@@ -15,6 +15,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Validation;
 
 
 class ChroniqueController extends AbstractController
@@ -76,7 +79,7 @@ class ChroniqueController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($chronique);
             $entityManager->flush();
-            $this->addFlash('success', 'Nouvelle chronique ajouté ! ');
+            $this->addFlash('success', 'Nouvelle chronique ajoutée ! ');
         }
 
         return $this->render("chronique/chronique-form.html.twig", [

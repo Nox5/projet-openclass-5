@@ -4,10 +4,10 @@
     <div class="container">
         <div clas="row">
             <div class="col titreCrud">
-                {{ form_start(form_chronique, {'attr' : {'novalidate': 'novalidate'}}) }}
+                {{ form_start(form_bd, {'attr' : {'novalidate': 'novalidate'}}) }}
                     <h3>{{ form_title }}</h3>
-                    {{ form(form_chronique) }}
-                {{ form_end(form_chronique) }}
+                    {{ form(form_bd) }}
+                {{ form_end(form_bd) }}
             </div>
              <a href="{{ path("admin") }}" class="btn btn-primary boutonRetourAdmin">Retour</a>
         </div>

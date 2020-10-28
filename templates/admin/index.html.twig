@@ -8,7 +8,7 @@
             <div class="col">
                 {% for chronique in chroniques %}
                     <div class="card chroniqueAdministration">
-                        <h5 class="card-header">Chronique du : {{chronique.date|date}}</h5>
+                        <h5 class="card-header">Chronique du : {{chronique.date|date("d.m.Y")}}</h5>
                         <div class="card-body">
                             <h5 class="card-title">{{chronique.titre|raw}}</h5>
                             <p class="card-text">{{chronique.contenu|slice(0, 100)|raw }}</p>
@@ -18,6 +18,7 @@
                     </div>
                 {% endfor %}
                 <a href="{{ path('add_chronique') }}" class="btn btn-primary boutonAjouterChronique">Ajouter une nouvelle chronique</a>
+                <a href="{{ path('add_bd') }}" class="btn btn-primary boutonAjouterChronique">Ajouter une nouvelle BD au top 5</a>
             </div>
         </div>
     </div>
@@ -26,11 +27,15 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <h3>Ma wishlist</h3>
-                {% for bandeDessinee in wishlist.getBandeDessinee() %}
-                    <p>{{ bandeDessinee.titre}}</p>
-                    <a href="{{ path('deletebdwishlist', {'id': bandeDessinee.id}) }}" class="btn btn-primary">Supprimer</a>
-                {% endfor %}
+                {% if wishlist is null  %}
+                    <p>Vous n'avez pas encore de wishlist</p>
+                {% else %}
+                    <h3>Ma wishlist</h3>
+                    {% for bandeDessinee in wishlist.getBandeDessinee() %}
+                        <p>{{ bandeDessinee.titre}}</p>
+                        <a href="{{ path('deletebdwishlist', {'id': bandeDessinee.id}) }}" class="btn btn-primary">Supprimer</a>
+                    {% endfor %}
+                {% endif %}  
             </div>
         </div>
     </div>

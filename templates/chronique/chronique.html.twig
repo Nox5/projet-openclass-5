@@ -26,7 +26,7 @@
                         <img src="{{ asset('image/'~chronique.image|e) }}" style="max-width: 150px;">
                     </div>
                     <div class="card-body textChronique">
-                        {{ chronique.Date |date }}
+                        <p>Publié le : {{ chronique.Date |date("d.m.Y") }}</p>
                         <p class="card-text">{{ chronique.contenu|raw }}</p>
                         <a href="{{ path("main") }}"  class="btn btn-primary">Accueil des chroniques</a>
                     </div>

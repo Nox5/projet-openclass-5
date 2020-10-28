@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\ChroniqueRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -20,21 +21,31 @@ class Chronique
     private $id;
 
     /**
+     * @Assert\NotBlank(message = "Le titre ne peut être vide.")
+     * @Assert\Length(
+     *  min = 3,
+     *  max = 70,
+     *  minMessage = "Ce titre est trop court",
+     *  maxMessage = "Ce titre est trop long"
+     * )
      * @ORM\Column(type="string", length=255)
      */
     private $titre;
 
     /**
+     * @Assert\NotBlank(message = "Le contenu ne peut être vide")
      * @ORM\Column(type="text")
      */
     private $contenu;
 
     /**
+     * @Assert\NotBlank(message = "La date ne peut être vide")
      * @ORM\Column(type="date")
      */
     private $date;
 
     /**
+     * @Assert\NotBlank(message = "Une image est nécessaire")
      * @ORM\Column(type="string", length=255)
      */
     private $image;

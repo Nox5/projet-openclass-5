@@ -6,6 +6,7 @@ use App\Entity\BandeDessinee;
 use App\Entity\WishList;
 use App\Repository\BandeDessineeRepository;
 use App\Repository\ChroniqueRepository;
+use App\Repository\UserRepository;
 use App\Repository\WishListRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,7 +26,6 @@ class AdminController extends AbstractController
             'chroniques' => $chroniqueRepository->findAll(),
             'wishlist' => $wichListRepository->findOneBy([
                 'user' => $this->getUser()
-                
                 ]
             ),
         ]);
